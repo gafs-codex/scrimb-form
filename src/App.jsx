@@ -33,15 +33,30 @@ function App() {
   function signUp(formData) {
     // behind the scenes the action will prevent default
     // and also resets theform automatically for us and other things
-    const email = formData.get("email")
+    {/*const email = formData.get("email")
     const password = formData.get("password")
     const jobStatus = formData.get("employmentStatus");
     const dietaryRestrictions = formData.getAll("dietaryRestrictions");
+    const favcolor = formData.get("favcolor")
     console.log(email);
     console.log(password);
     console.log(jobStatus);
     console.log(dietaryRestrictions);
-    
+    console.log(favcolor); */}
+    // there are times were it's necessary to select the forms
+    // But for this exercis lets assume the form is very long
+
+    const data = Object.fromEntries(formData)
+    const dietaryData = formData.getAll("dietaryRestrictions")
+
+    const allData = {
+      ...data,
+      dietaryRestrictions: dietaryData
+    }
+
+    console.log(allData);
+
+
   }
   return (
     <section>
@@ -96,6 +111,18 @@ function App() {
           </label>
         </fieldset>
 
+
+        <label htmlFor='favcolor'>What is your favorite color?</label>
+        <select id='favcolor' name='favcolor' defaultValue="chose">
+          <option value="chose" disabled>-- Choose a color --</option>
+          <option value="Red">Red</option>
+          <option value="Orange">Orange</option>
+          <option value="Green">Green</option>
+          <option value="Blue">Blue</option>
+          <option value="Indigo">Indigo</option>
+          <option value="Violet">Violet</option>
+          <option value="Pink">Pink</option>
+        </select>
 
         <button>Submit</button>
       </form>
