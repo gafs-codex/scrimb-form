@@ -36,10 +36,12 @@ function App() {
     const email = formData.get("email")
     const password = formData.get("password")
     const jobStatus = formData.get("employmentStatus");
+    const dietaryRestrictions = formData.getAll("dietaryRestrictions");
     console.log(email);
     console.log(password);
     console.log(jobStatus);
-
+    console.log(dietaryRestrictions);
+    
   }
   return (
     <section>
@@ -61,18 +63,36 @@ function App() {
           <legend>Employment Status</legend>
 
           <label htmlFor="">
-            <input type="radio" name='employmentStatus' value="Uemployed" defaultChecked={true} />
+            <input type="radio" name='employmentStatus' value="Unemployed" defaultChecked={true} />
             Unemployed
           </label>
 
           <label htmlFor="">
-            <input type="radio" name='employmentStatus' value="Part-Time"/>
+            <input type="radio" name='employmentStatus' value="Part-Time" />
             Part-Time
           </label>
 
           <label htmlFor="">
-            <input type="radio" name='employmentStatus' value="Full-Time"/>
+            <input type="radio" name='employmentStatus' value="Full-Time" />
             Full-Time
+          </label>
+        </fieldset>
+
+
+
+        <fieldset>
+          <legend>Dietary restrictions:</legend>
+          <label>
+            <input type="checkbox" name="dietaryRestrictions" value="kosher" />
+            Kosher
+          </label>
+          <label>
+            <input type="checkbox" name="dietaryRestrictions" value="vegan" />
+            Vegan
+          </label>
+          <label>
+            <input type="checkbox" name="dietaryRestrictions" defaultChecked={true} value="gluten-free" />
+            Gluten-free
           </label>
         </fieldset>
 
